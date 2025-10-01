@@ -169,5 +169,21 @@ def parens_match_dc_helper(mylist):
     else:
         return (i + k - j, l)
     ###
+
+def iterate(f, x, a):
+    if len(a) == 0:
+        return x
+    else:
+        return iterate(f, f(x, a[0]), a[1:])
+
+def reduce(f, id_, a):
+    if len(a) == 0:
+        return id_
+    elif len(a) == 1:
+        return a[0]
+    else:
+        return f(a[0], reduce(f, id_, a[1:]))
+def plus(x,y):
+    return x+y
     
 

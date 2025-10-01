@@ -1,6 +1,6 @@
 # CMPS 2200 Assignment 2
 
-**Name:**_________________________
+**Name:**Jordan Sztejman
 
 In this assignment we'll work on applying the methods we've learned to analyze recurrences, and also see their behavior
 in practice. As with previous
@@ -13,9 +13,9 @@ and push to your github repository.
 ## Part 1. Asymptotic Analysis
 
 Derive asymptotic upper bounds of work for each recurrence below.
-
+Using master theorem, unless otherwise stated.
 * $W(n)=2W(n/3)+1$
-.  
+.  W(n)=O(n^(log base 3(​2)))
 .  
 . 
 .  
@@ -24,7 +24,7 @@ Derive asymptotic upper bounds of work for each recurrence below.
 . 
  
 * $W(n)=5W(n/4)+n$
-.  
+.  W(n)=O(n^(log base 4(​5)))
 .
 .  
 . 
@@ -35,7 +35,7 @@ Derive asymptotic upper bounds of work for each recurrence below.
 . 
 
 * $W(n)=7W(n/7)+n$
-.  
+.  W(n)=O(n(log(n)))
 . 
 .  
 .  
@@ -44,7 +44,7 @@ Derive asymptotic upper bounds of work for each recurrence below.
 .
 
 * $W(n)=9W(n/3)+n^2$
-.  
+.  W(n)=O(n^2(log(n)))
 .
 . 
 .  
@@ -55,7 +55,7 @@ Derive asymptotic upper bounds of work for each recurrence below.
 .
 
 * $W(n)=8W(n/2)+n^3$
-.  
+.  W(n)=O(n^(3)*log(n))
 .
 .  
 .  
@@ -67,7 +67,7 @@ Derive asymptotic upper bounds of work for each recurrence below.
 
 
 * $W(n)=49W(n/25)+n^{3/2}\log n$
-.  
+.  W(n)=O(n^(3/2)*log(n))
 .  
 . 
 .  
@@ -77,7 +77,7 @@ Derive asymptotic upper bounds of work for each recurrence below.
 .  
 
 * $W(n)=W(n-1)+2$
-.  
+.  This is a linear recurrence so that makes it W(n)=O(n)
 .  
 . 
 .  
@@ -87,7 +87,7 @@ Derive asymptotic upper bounds of work for each recurrence below.
 .  
 
 * $W(n)= W(n-1)+n^c$, with $c\geq 1$
-.  
+.  This was derived via unrolling, W(n)=O(n^(c+1))
 .  
 .  
 .  
@@ -97,7 +97,7 @@ Derive asymptotic upper bounds of work for each recurrence below.
 . 
 
 * $W(n)=W(\sqrt{n})+1$
-.  
+.  W(n)=O(log(log(n)))
 .  
 .  
 .  
@@ -125,7 +125,7 @@ Suppose that for a given task you are choosing between the following three algor
 
     What are the asymptotic running times of each of these algorithms?
     Which algorithm would you choose?
-
+Algorithm A would have a run time of O(n^(log base 2(5))), which is found using master theorem. It has a recurrence of T(n)=5T(n/2)+ n with master theorem paramters of a=5, b=2, f(n)=n.  Alogrithm B is found using unrolling and has a run time of O(2^n). It has a recurrence of T(n)= 2T(n-1)+c. Algorithm c is found suing the master theorem and has a run time of O(n^2log(n)). It has a recurrence of T(n)=9T(n/3)+ n^2 with master theorem paramters of a=9, b=3, f(n)=n^2.  The alogrithm I would choose is algorithm c as it runs polynomially, which is faster than the exponential growth of alogrtihm b and the larger polynomial in algorithm A.
 
 .  
 .  
@@ -160,7 +160,7 @@ Below, we'll solve this problem three different ways, using iterate, scan, and d
 
 **3b.** What are the recurrences for the Work and Span of this solution? What are their Big Oh solutions?
 
-**enter answer here**
+The recurrences for work are W(n)= W(n-1)+ O(1), which has a big Oh solution of W(n)=O(n). The work is O(n) becuase we process each element exactly once with constant time operations. The recurrences for span are S(n)=S(n-1)+O(1), and the big Oh solution is O(n). The span is O(n) because all work is sequential.
 
 .  
 . 
@@ -176,8 +176,8 @@ Below, we'll solve this problem three different ways, using iterate, scan, and d
 
 **3d.** Assume that any `map`s are done in parallel, and that we use the efficient implementation of `scan` from class. What are the recurrences for the Work and Span of this solution? 
 
-**enter answer here**
 
+The recurrence for work is W(n) = O(n), and has no change due to parallelization. As a result of the map being done in an efficent parallel span is able to become logarithmic, and have a recurrence of S(n) = O(log(n)).
 .  
 .  
 
@@ -197,7 +197,7 @@ Below, we'll solve this problem three different ways, using iterate, scan, and d
 
 **3f.** Assuming any recursive calls are done in parallel, what are the recurrences for the Work and Span of this solution? What are their Big Oh solutions?
 
-**enter answer here**
+The recurrences for work is W(n)= 2W(n/2)+O(1) and the big Oh notation is W(n)= O(n). The recurrence for span is S(n)=S(n/2)+O(1) and the big Oh solution is O(log(n)). 
 
 .  
 . 
